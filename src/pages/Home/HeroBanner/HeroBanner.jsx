@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styles from "./HeroBanner.module.scss";
 import { useNavigate } from "react-router-dom";
-import fetchData from "../../hooks/fetchData";
 import { useSelector } from "react-redux";
+import fetchData from "../../../hooks/fetchData";
+import Img from "../../../components/LazyLoadingImage/Img";
+import ContentWrapper from "../../../components/ContentWrapper/ContentWrapper";
+import "./herobanner.scss";
 
 const HeroBanner = () => {
   const { url } = useSelector((state) => state.home);
@@ -26,15 +28,21 @@ const HeroBanner = () => {
   };
 
   return (
-    <div className={styles.heroBanner}>
-      <div className={styles.wrapper}>
-        <div className={styles.heroBannerContent}>
-          <span className={styles.title}>Welcome.</span>
-          <span className={styles.subTitle}>
+    <div className="heroBanner">
+      {!loading && (
+        <div className="backdropImage">
+          <Img src={backgroundMovieImage} />
+        </div>
+      )}
+      <div className="opacityLayer"></div>
+      <ContentWrapper>
+        <div className="heroBannerContent">
+          <span className="title">Welcome!</span>
+          <span className="subTitle">
             Millions of movies, TV shows and people to discover.Explore Now
           </span>
         </div>
-        <div className={styles.searchInput}>
+        <div className="searchInput">
           <input
             type="text"
             placeholder="Search Movies and TV shows"
@@ -43,7 +51,7 @@ const HeroBanner = () => {
           />
           <button>Search</button>
         </div>
-      </div>
+      </ContentWrapper>
     </div>
   );
 };

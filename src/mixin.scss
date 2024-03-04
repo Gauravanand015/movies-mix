@@ -1,0 +1,37 @@
+@mixin smallScreen {
+  @media only screen and (min-width: 640px){
+    @content
+  }
+}
+
+@mixin mediumScreen {
+  @media only screen and (min-width: 768px){
+    @content
+  }
+}
+
+@mixin largeScreen {
+  @media only screen and (min-width: 1024px){
+    @content
+  }
+}
+
+@mixin xlScreen {
+  @media only screen and (min-width:1280px){
+    @content
+  }
+}
+
+@mixin doubleXXLScreen {
+  @media only screen and (min-width:1536px){
+    @content
+  }
+}
+
+@mixin ellipsis{
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
